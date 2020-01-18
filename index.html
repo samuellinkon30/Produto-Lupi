@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="jquery-3.4.1.js"></script>
 	<script src="https://kit.fontawesome.com/1435c62f2b.js" crossorigin="anonymous"></script>
 	<title> Jquery</title>
 
@@ -36,19 +36,21 @@
 
 
 	<div class="box-resumo">
+
 		<h2 id="resumo">Sua Pizza</h2>
-		<h3 id="txt-tamanho"></h3>
-<div class="pizza">
-			<div class="pizza-pequena"><img class="image" src="assets/pizza-pequena.png"></div>
+
+		<h3 id="txt-tamanho"></h3>	
+		<div class="pizza">
+			<div class="pizza-pequena" style="float: left;"><img class="image" src="assets/pizza-pequena.png"></div>
 			<div class="pizza-grande"><img class="image" src="assets/pizza-grande.jpg"></div>
 		</div>
+
 		<h3 id="txt-massa"></h3>
 		<div class="pizza">
-			<div class="pizza-com-borda"><img class="image" src="assets/com-borda.jpg"></div>
+			<div class="pizza-com-borda" style="float: left;"><img class="image" src="assets/com-borda.jpg"></div>
 			<div class="pizza-sem-borda"><img class="image" src="assets/sem-borda.png"></div>
 		</div>
 		
-
 	</div>
 
 
@@ -56,7 +58,6 @@
 </html>
 
 <style type="text/css">
-
 .image
 {
 	width: 150px;
@@ -127,6 +128,16 @@
 			$('#txt-massa').append("Massa: " ,$('#op-2 .sel').val());
 		}
 
+		console.log($('#op-2 input:checked').val());
+		if ($('#op-2 input:checked').val()=="Tradicional") 
+		{
+			$('.pizza-com-borda').hide('slow');
+		}
+		else if($('#op-2 input:checked').val()=="Fina") 
+		{					
+			$('.pizza-sem-borda').hide('slow');
+		}
+
 	}
 
 
@@ -135,5 +146,7 @@
 		$('.box_massa').toggle(1000);
 		$('.edit-mas').addClass('disable');
 		$('#txt-massa').html("");
+		$('.pizza-sem-borda').show('slow');
+		$('.pizza-com-borda').show('slow');
 	}
 </script>
