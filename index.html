@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/1435c62f2b.js" crossorigin="anonymous"></script>
+	<title> Jquery</title>
+
+
+</head>
+<body>
+
+	<h2>Tamanho<a href="Javascript:editar_tamanho()" class="disable edit-tam"><i style="font-size: 15px; margin-left: 10px;" class="far fa-edit"></i></a></h2>
+
+	<div class="box-tamanho">
+		<form  id="op-1">
+			<input type="radio" class="sel" name="op" value="Individual">Individual<br>
+			<input type="radio" class="sel" name="op" value="Grande">Grande<br>
+
+		</form>
+		<br>
+		<button onclick="verificar_tamanho()">Continuar</button>
+	</div>
+
+
+	<h2>Massa<a href="Javascript:editar_massa()" class="disable edit-mas"><i style="font-size: 15px; margin-left: 10px;"" class="far fa-edit"></i></a></h2>
+
+	<div class="box_massa">
+		<form  id="op-2">
+			<input type="radio" class="sel" name="op" value="Fina">Fina<br>
+			<input type="radio" class="sel" name="op" value="Tradicional">Tradicional<br>
+
+		</form>
+		<br>
+		<button onclick="verificar_massa()">Continuar</button>
+	</div>
+
+
+	<div class="box-resumo">
+		<h2 id="resumo">Sua Pizza</h2>
+		<h3 id="txt-tamanho"></h3>
+<div class="pizza">
+			<div class="pizza-pequena"><img class="image" src="assets/pizza-pequena.png"></div>
+			<div class="pizza-grande"><img class="image" src="assets/pizza-grande.jpg"></div>
+		</div>
+		<h3 id="txt-massa"></h3>
+		<div class="pizza">
+			<div class="pizza-com-borda"><img class="image" src="assets/com-borda.jpg"></div>
+			<div class="pizza-sem-borda"><img class="image" src="assets/sem-borda.png"></div>
+		</div>
+		
+
+	</div>
+
+
+</body>
+</html>
+
+<style type="text/css">
+
+.image
+{
+	width: 150px;
+	padding: 10px;
+	height: 150px;
+	border-radius: 50%;
+}
+.box-resumo
+{
+	padding: 10px;
+}
+.disable
+{
+	display: none;
+}
+.select{clear: both;}
+.box
+{
+	min-height: 30px;
+	background-color: yellow;
+}
+</style>
+<script>
+
+	function verificar_tamanho()
+	{
+		var verificado = $('#op-1 .sel').is(':checked');
+
+		if(verificado)
+		{
+			$('.edit-tam').removeClass('disable');
+			$('.box-tamanho').toggle('slow');
+			$('#txt-tamanho').append("Tamanho: " ,$('#op-1 .sel').val());
+			$('.base').addClass("borda");
+		}
+
+		console.log($('#op-1 input:checked').val());
+		if ($('#op-1 input:checked').val()=="Grande") 
+		{
+			$('.pizza-pequena').hide('slow');
+		}
+		else if($('#op-1 input:checked').val()=="Individual") 
+		{					
+			$('.pizza-grande').hide('slow');
+		}
+
+	}
+
+
+	function editar_tamanho()
+	{
+		$('.box-tamanho').toggle(1000);
+		$('.edit-tam').addClass('disable');
+		$('#txt-tamanho').html("");
+		$('.pizza-grande').show('slow');
+		$('.pizza-pequena').show('slow');
+	}
+
+
+	function verificar_massa()
+	{
+		var verificado2 = $('#op-2 .sel').is(':checked');
+
+		if(verificado2)
+		{
+			$('.edit-mas').removeClass('disable');
+			$('.box_massa').toggle('slow');
+			$('#txt-massa').append("Massa: " ,$('#op-2 .sel').val());
+		}
+
+	}
+
+
+	function editar_massa()
+	{
+		$('.box_massa').toggle(1000);
+		$('.edit-mas').addClass('disable');
+		$('#txt-massa').html("");
+	}
+</script>
